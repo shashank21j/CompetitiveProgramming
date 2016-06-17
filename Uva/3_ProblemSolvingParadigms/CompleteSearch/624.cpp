@@ -2,18 +2,17 @@
 
 using namespace std;
 
-bool flag = false;
-int maxi = INT_MAX;
+int mini = INT_MAX;
 vector <int> res1;
-void fun(int init, vector <int> arr, vector <int> &res, int N) {
+void fun(int init, vector <int> &arr, vector <int> &res, int N) {
     for (int i = init; i<arr.size();i++) {
         if (arr[i] <= N) {
             res.push_back(arr[i]);
             fun(i+1,arr,res,N-arr[i]);
         }
     }
-    if (N < maxi) {
-        maxi = N;
+    if (N < mini) {
+        mini = N;
         res1.clear();
         for (auto i:res) {
             res1.push_back(i);
@@ -24,8 +23,7 @@ void fun(int init, vector <int> arr, vector <int> &res, int N) {
 int main () {
     int N;
     while (cin>>N) {
-        flag = false;
-        maxi = INT_MAX;
+        mini = INT_MAX;
         int n;
         cin>>n;
         vector <int> arr(n);
