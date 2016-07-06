@@ -1,5 +1,3 @@
-
-// UVA 12148
 #include <bits/stdc++.h>
 using namespace std;
 
