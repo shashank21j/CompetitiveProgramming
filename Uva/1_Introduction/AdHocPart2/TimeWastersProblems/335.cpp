@@ -14,31 +14,37 @@ bool is_int(string s) {
 int main() {
     int n;
     cin>>n;
-    string a, b;
+    string a, aa, b;
+    getline(cin,aa);
     int p;
     string source;
     set <string> multi;
-    map <string, set<pair<int, string> > > dic;
+    map <string, set<pair<int, string> > > dic1;
+    map <string, set<pair<int, string> > > dic2;
     while(n--) {
-        cin>>a;
-        if (is_int(a)) {
-            stringstream ss(a);
+        getline(cin, aa);
+        stringstream ss(aa);
+        if (aa[0] == ' ') {
             ss >> p;
+            ss >> b;
         }
         else {
+            ss >> a;
+            ss >> p;
+            ss >> b;
             source = a;
-            cin >> p;
         }
-        cin >> b;
         string new_a = source;
         if (source[0] == '*') {
             new_a = "";
             for (int i = 2; i < source.length();i++) {
                 new_a += source[i];
             }
-            multi.insert(new_a);
+            dic2[new_a].insert(make_pair(p,b));
         }
-        dic[new_a].insert(make_pair(p,b));
+        else {
+            dic1[new_a].insert(make_pair(p,b));
+        }
     }
     // for (auto i:dic) {
     //     cout<<i.first<<" "<<i.second.size()<<endl;
@@ -63,8 +69,8 @@ int main() {
         }
         string backup_q = q;
         set <pair <int, string> > res;
-        if (dic.find(q) != dic.end() && multi.find(q) == multi.end()) {
-            set <pair <int, string> > temp = dic[q];
+        if (dic1.find(q) != dic1.end()) {
+            set <pair <int, string> > temp = dic1[q];
             for (auto i:temp) {
                 if (status.find(i.second) == status.end() || status[i.second]) {
                     // cout<<" "<<i.second;
@@ -87,8 +93,8 @@ int main() {
         }
         q = new_q;
         while (q != "") {
-            if (dic.find(q) != dic.end() && multi.find(q) != multi.end()) {
-                set <pair <int, string> > temp = dic[q];
+            if (dic2.find(q) != dic2.end()) {
+                set <pair <int, string> > temp = dic2[q];
                 for (auto i:temp) {
                     if ((status.find(i.second) == status.end() || status[i.second]) && i.first < priority){
                         // cout<<" "<<i.second;
