@@ -2,12 +2,6 @@
 
 using namespace std;
 
-struct classcomp {
-    bool operator() (const pair<int,string> & lhs, const pair<int, string> & rhs) const {
-        return lhs.first < rhs.first;
-    }
-};
-
 bool is_int(string s) {
     for (int i = 0;i < s.length(); i++) {
         if (s[i] > 57 || s[i] < 48) {
@@ -16,61 +10,82 @@ bool is_int(string s) {
     }
     return true;
 }
-
+stringstream ss;
 int main() {
     int n;
     cin>>n;
+    string aa;
+    getline(cin, aa);
     string a, b;
     int p;
     string source;
     set <string> multi;
-    map <string, set<pair<int, string>, classcomp > > dic;
+    unordered_map <string, set<pair<int, string> > > dic1;
+    unordered_map <string, set<pair<int, string> > > dic2;
     while(n--) {
-        cin>>a;
-        if (is_int(a)) {
-            stringstream ss(a);
-            ss >> p;
+        cin>>aa;
+        if (is_int(aa)) {
+            ss.str(aa);
+            ss>>p;
+            cin>>b;
         }
         else {
+            a = aa;
+            cin>>p;
+            cin>>b;
             source = a;
-            cin >> p;
         }
-        cin >> b;
+        // cout<<a<<p<<b<<endl;
+        ss.str("");
+        ss.clear();
         string new_a = source;
         if (source[0] == '*') {
             new_a = "";
             for (int i = 2; i < source.length();i++) {
                 new_a += source[i];
             }
-            multi.insert(new_a);
+            dic2[new_a].insert(make_pair(p,b));
         }
-        dic[new_a].insert(make_pair(p,b));
+        else {
+            dic1[new_a].insert(make_pair(p,b));
+        }
     }
     // for (auto i:dic) {
     //     cout<<i.first<<" "<<i.second.size()<<endl;
     // }
+    getline(cin, aa);
     char x;
     string q;
-    cin>>x;
+    getline(cin, aa);
+    ss.str(aa);
+    ss>>x;
     // cout<<"Answering"<<endl;
     map <string, bool> status;
     while (x != 'X') {
         int priority = INT_MAX;
-        cin >> q;
+        ss >> q;
         if (x == 'U') {
             status[q] = true;
-            cin >> x;
+            ss.str("");
+            ss.clear();
+            getline(cin, aa);
+            ss.str(aa);
+            ss >> x;
             continue;
         }
         if (x == 'D') {
             status[q] = false;
-            cin >> x;
+            ss.str("");
+            ss.clear();
+            getline(cin, aa);
+            ss.str(aa);
+            ss >> x;
             continue;
         }
         string backup_q = q;
-        set <pair <int, string>, classcomp > res;
-        if (dic.find(q) != dic.end() && multi.find(q) == multi.end()) {
-            set <pair <int, string>, classcomp > temp = dic[q];
+        set <pair <int, string> > res;
+        if (dic1.find(q) != dic1.end()) {
+            set <pair <int, string> > temp = dic1[q];
             for (auto i:temp) {
                 if (status.find(i.second) == status.end() || status[i.second]) {
                     // cout<<" "<<i.second;
@@ -93,8 +108,8 @@ int main() {
         }
         q = new_q;
         while (q != "") {
-            if (dic.find(q) != dic.end() && multi.find(q) != multi.end()) {
-                set <pair <int, string>, classcomp > temp = dic[q];
+            if (dic2.find(q) != dic2.end()) {
+                set <pair <int, string> > temp = dic2[q];
                 for (auto i:temp) {
                     if ((status.find(i.second) == status.end() || status[i.second]) && i.first < priority){
                         // cout<<" "<<i.second;
@@ -122,7 +137,11 @@ int main() {
             break;
         }
         cout<<endl;
-        cin>>x;
+        ss.str("");
+        ss.clear();
+        getline(cin, aa);
+        ss.str(aa);
+        ss >> x;
     }
     return 0;
 }

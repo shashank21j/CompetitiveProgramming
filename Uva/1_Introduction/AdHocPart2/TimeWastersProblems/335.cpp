@@ -10,20 +10,25 @@ bool is_int(string s) {
     }
     return true;
 }
-
+stringstream ss;
 int main() {
     int n;
-    cin>>n;
-    string a, aa, b;
+    string aa;
     getline(cin,aa);
+    ss.str(aa);
+    ss>>n;
+    ss.str("");
+    ss.clear();
+
+    string a, b;
     int p;
     string source;
     set <string> multi;
-    map <string, set<pair<int, string> > > dic1;
-    map <string, set<pair<int, string> > > dic2;
+    unordered_map <string, set<pair<int, string> > > dic1;
+    unordered_map <string, set<pair<int, string> > > dic2;
     while(n--) {
         getline(cin, aa);
-        stringstream ss(aa);
+        ss.str(aa);
         if (aa[0] == ' ') {
             ss >> p;
             ss >> b;
@@ -34,6 +39,8 @@ int main() {
             ss >> b;
             source = a;
         }
+        ss.str("");
+        ss.clear();
         string new_a = source;
         if (source[0] == '*') {
             new_a = "";
@@ -51,20 +58,30 @@ int main() {
     // }
     char x;
     string q;
-    cin>>x;
+    getline(cin, aa);
+    ss.str(aa);
+    ss>>x;
     // cout<<"Answering"<<endl;
     map <string, bool> status;
     while (x != 'X') {
         int priority = INT_MAX;
-        cin >> q;
+        ss >> q;
         if (x == 'U') {
             status[q] = true;
-            cin >> x;
+            ss.str("");
+            ss.clear();
+            getline(cin, aa);
+            ss.str(aa);
+            ss >> x;
             continue;
         }
         if (x == 'D') {
             status[q] = false;
-            cin >> x;
+            ss.str("");
+            ss.clear();
+            getline(cin, aa);
+            ss.str(aa);
+            ss >> x;
             continue;
         }
         string backup_q = q;
@@ -122,7 +139,11 @@ int main() {
             break;
         }
         cout<<endl;
-        cin>>x;
+        ss.str("");
+        ss.clear();
+        getline(cin, aa);
+        ss.str(aa);
+        ss >> x;
     }
     return 0;
 }
