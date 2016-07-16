@@ -11,8 +11,7 @@ bool myfunction (string s1,string s2) {
         else if (t1 > t2) return false;
         else if (s1[i] < s2[i]){
             return true;
-        }
-        else if (s1[i] > s2[i]) {
+        } else if (s1[i] > s2[i]) {
             return false;
         }
     }

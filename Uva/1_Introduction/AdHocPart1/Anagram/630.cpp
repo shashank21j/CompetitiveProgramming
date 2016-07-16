@@ -22,8 +22,7 @@ int main () {
             cout<<"Anagrams for: "<<s<<endl;
             if (dic.find(t) == dic.end()) {
                 cout<<"No anagrams for: "<<s<<endl;
-            }
-            else {
+            } else {
                 int it = 1;
                 for (auto i:dic[t]) {
                     cout<<"  "<<it++<<") "<<i<<endl;

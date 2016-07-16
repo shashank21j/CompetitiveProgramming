@@ -11,8 +11,7 @@ void fun (int init, vector <string> &dic, unordered_map <char,int> querry) {
         for (int j = 0; j < word.size(); j++) {
             if (temp.find(word[j]) == temp.end()) {
                 temp[word[j]] = 1;
-            }
-            else {
+            } else {
                 temp[word[j]] += 1;
             }
         }
@@ -79,8 +78,7 @@ int main () {
             if (s[i] == ' ') continue;
             if (querry.find(s[i]) == querry.end()) {
                 querry[s[i]] = 1;
-            }
-            else {
+            } else {
                 querry[s[i]] += 1;
             }
         }
@@ -91,8 +89,7 @@ int main () {
             for (int j = 0; j < word.size(); j++) {
                 if (temp.find(word[j]) == temp.end()) {
                     temp[word[j]] = 1;
-                }
-                else {
+                } else {
                     temp[word[j]] += 1;
                 }
             }

@@ -19,8 +19,7 @@ int main () {
         di[r] = s;
         if (di_cnt.find(r) != di_cnt.end()) {
             di_cnt[r] += 1;
-        }
-        else {
+        } else {
             di_cnt[r] = 1;
         }
         cin>>s;

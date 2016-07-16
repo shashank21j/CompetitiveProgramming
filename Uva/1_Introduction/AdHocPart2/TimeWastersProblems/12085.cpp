@@ -53,7 +53,6 @@ int main () {
         int i = 0;
         int j;
         while (i < inp.size()) {
-            // cout<<i<<endl;
             for (j = i+1;j<inp.size();j++) {
                 if (inp[j] == inp[i] + j-i) {
                     continue;
