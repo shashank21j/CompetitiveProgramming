@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 /*
-Warning common logic is defied. The ss>symb has read spaces too :-o
+Warning no spaces in testcases
 */
 stringstream ss;
 int main() {
@@ -22,8 +22,7 @@ int main() {
         ss >> symb;
         if (symb.length() > 3) {
             l2 = symb[3] - 48;
-        }
-        else {
+        } else {
             l2 = 0;
         }
         cout<<"Case "<<++idx<<": "<<l1*0.5 + l2*0.05<<endl;
