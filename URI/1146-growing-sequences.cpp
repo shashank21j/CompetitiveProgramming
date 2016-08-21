@@ -11,13 +11,12 @@ int main() {
 	#if defined (SUBLIME)
 		ifstream ifile("stdin.input");
 	#endif
-	int a,b;
-	while (1) {
-		ISTREAM>>a>>b;
-		if (a == 0 && b == 0) {
-			break;
-		}
-		cout<<a+b<<endl;
+	int n;
+	ISTREAM>>n;
+	while (n) {
+		for (int i=1;i<n;i++) cout<<i<<" ";
+		cout<<n<<endl;
+		ISTREAM>>n;
 	}
 	return 0;
 }
