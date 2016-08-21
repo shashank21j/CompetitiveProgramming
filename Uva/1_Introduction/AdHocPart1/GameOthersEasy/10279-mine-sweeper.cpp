@@ -51,9 +51,11 @@ int main() {
 				else if (bomb == true and matrix[i][j] == -1)cout<<'*';
 				else cout<<".";
 			}
-			cout<<endl;
+			cout << endl;
 		}
-		if (t>0) cout<<endl;
+		if (t > 0) {
+			cout << endl;
+		}
 	}
 	return 0;
 }

@@ -20,13 +20,12 @@ bool comp(vector <int> brr) {
 	for (int i = 0;i<temp1.size();i++) {
 		cnt+= min(temp1[i],temp2[i]);
 	}
-	
+
 	if (cnt == b+c && cnt2 == b) return true;
 	else return false;
 }
 
-vector<vector<int>> generateK(int k, vector<vector<int>> acc)
-{
+vector<vector<int>> generateK(int k, vector<vector<int>> acc) {
     if(k == 0) return acc;
     vector<vector<int>> result;
     for(int digit = 1; digit < 10; ++digit) {
@@ -38,6 +37,7 @@ vector<vector<int>> generateK(int k, vector<vector<int>> acc)
     }
     return generateK(k - 1, result);
 }
+
 int main() {
 	int t;
 	cin>>t;
@@ -51,12 +51,11 @@ int main() {
 			brr.push_back(1);
 		}
 		counter = 0;
-		vector<vector<int>> res = generateK(arr.size(), vector<vector<int>>(1, vector<int>()));
+		vector <vector<int> > res = generateK(arr.size(), vector<vector<int>>(1, vector<int>()));
 		for(int i = 0; i < res.size(); ++i) {
 		    if (comp(res[i])) counter++;
 		}
-		cout<<counter<<endl;
+		cout << counter << endl;
 	}
-	
 	return 0;
 }

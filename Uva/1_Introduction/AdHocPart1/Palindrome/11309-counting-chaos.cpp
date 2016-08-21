@@ -15,7 +15,7 @@ int palindrome(int n) {
 
 int main () {
     int n;
-    cin>>n;
+    cin >> n;
     while (n--) {
         string s;
         cin>>s;

@@ -34,18 +34,19 @@ int main() {
 				if (matrix[i][j] == -1) fill(i,j);
 			}
 		}
-		cout<<"Field #"<<counter<<":"<<endl;
+		cout << "Field #" << counter << ":" << endl;
 		for (int i = 0;i<a;i++) {
 			for (int j = 0;j<b;j++) {
 				if (matrix[i][j] == -1) cout<<'*';
 				else cout<<matrix[i][j];
 			}
-			cout<<endl;
+			cout << endl;
 		}
-		cin>>a>>b;
+		cin >> a >> b;
 		if (a == 0 && b == 0) {
 			break;
+		} else {
+			cout<<endl;
 		}
-		else cout<<endl;
 	}
 }

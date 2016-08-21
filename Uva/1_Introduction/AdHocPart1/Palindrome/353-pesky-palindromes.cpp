@@ -23,7 +23,6 @@ int main () {
         }
         int cnt = 0;
         for (auto i:chk) {
-            // cout<<i<<endl;
             if (palin(i)) {
                 cnt++;
             }

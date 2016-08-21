@@ -24,7 +24,6 @@ int main () {
 
         for (int i = 1; i < n; i++) {
             for (int j = 1; j < n; j++) {
-                // if (i == j) continue;
                 transactions[i][0] += transactions[i][j];
                 transactions[0][j] += transactions[i][j];
                 transactions[i][j] = 0;
