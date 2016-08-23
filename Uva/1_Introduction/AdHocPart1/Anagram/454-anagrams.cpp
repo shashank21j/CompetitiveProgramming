@@ -3,14 +3,14 @@ using namespace std;
 
 int main () {
     int n;
-    cin>>n;
+    cin >> n;
     string st;
     getchar();
-    getline(cin,st);
+    getline(cin, st);
     while (n--) {
-        getline(cin,st);
-        map <string, vector< string> > dic;
-        vector <string > input;
+        getline(cin, st);
+        map <string, vector <string> > dic;
+        vector <string> input;
         while (st.length() > 0) {
             input.push_back(st);
             getline(cin,st);
@@ -22,8 +22,12 @@ int main () {
                 if (i == j) continue;
                 string t1 = input[i];
                 string t2 = input[j];
-                if (t1 > t2) continue;
-                if (t1 == t2 && i >j) continue;
+                if (t1 > t2) {
+                    continue;
+                }
+                if (t1 == t2 && i > j) {
+                    continue;
+                }
                 string r1 = "";
                 string r2 = "";
                 vector <char> tmp1;
@@ -49,20 +53,17 @@ int main () {
                 }
 
                 if (r1 == r2) {
-
-                    // cout<<t1<<" "<<t2<<endl;
                     res.push_back(make_pair(t1,t2));
                 }
             }
         }
 
         for (auto i: res) {
-            cout<<i.first<<" = "<<i.second<<endl;
+            cout << i.first << " = " << i.second << endl;
         }
 
-        // if (res.size() == 0) cout<<endl;
         if (n > 0) {
-            cout<<endl;
+            cout << endl;
         }
         dic.clear();
     }

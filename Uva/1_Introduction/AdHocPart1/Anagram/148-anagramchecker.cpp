@@ -52,29 +52,34 @@ void fun (int init, vector <string> &dic, unordered_map <char,int> querry) {
 }
 int main () {
     string s;
-    cin>>s;
+    cin >> s;
     vector <string> dictionary;
     while (s != "#") {
         dictionary.push_back(s);
-        cin>>s;
+        cin >> s;
     }
-    getline(cin,s);
-    getline(cin,s);
+    getline(cin, s);
+    getline(cin, s);
     while (s != "#") {
         stringstream ss(s);
         vector <string> sorted_querry;
+
         string t1;
-        while (ss>>t1) sorted_querry.push_back(t1);
+        while (ss >> t1) {
+            sorted_querry.push_back(t1);
+        }
+
         sort(sorted_querry.begin(), sorted_querry.end());
         string t = "";
-        for (int i = 0;i < sorted_querry.size(); i++) {
-            t = t+sorted_querry[i];
+        for (int i = 0; i < sorted_querry.size(); i++) {
+            t = t + sorted_querry[i];
             if (i < sorted_querry.size() -1) {
                 t = t + " ";
             }
         }
-        unordered_map <char,int> querry;
-        for (int i = 0;i < s.length();i++) {
+
+        unordered_map <char, int> querry;
+        for (int i = 0; i < s.length(); i++) {
             if (s[i] == ' ') continue;
             if (querry.find(s[i]) == querry.end()) {
                 querry[s[i]] = 1;
@@ -83,7 +88,7 @@ int main () {
             }
         }
         vector <string> dic;
-        for (int i = 0;i < dictionary.size();i++) {
+        for (int i = 0; i < dictionary.size(); i++) {
             unordered_map <char,int> temp;
             string word = dictionary[i];
             for (int j = 0; j < word.size(); j++) {
@@ -104,15 +109,16 @@ int main () {
                 dic.push_back(word);
             }
         }
+
         res.clear();
         result.clear();
         fun(0, dic, querry);
         sort(result.begin(), result.end());
         for (auto i: result) {
             if (i == t) continue;
-            cout<<s<<" = "<<i<<endl;
+            cout << s << " = " << i << endl;
         }
-        getline(cin,s);
+        getline(cin, s);
     }
     return 0;
 }
