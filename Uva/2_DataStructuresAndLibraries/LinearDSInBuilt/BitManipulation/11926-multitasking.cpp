@@ -29,7 +29,6 @@ int main () {
                 delta2 = delta1 + b - a;
                 if (delta1 > 1000000) break;
                 delta2 = min(delta2,1000001);
-                // cout<<delta1<<" "<<delta2<<endl;
                 for (int j = delta1;j < delta2;j++) {
                     if (busy[j] != 0) flag = false;
                     else busy[j] = 1;
