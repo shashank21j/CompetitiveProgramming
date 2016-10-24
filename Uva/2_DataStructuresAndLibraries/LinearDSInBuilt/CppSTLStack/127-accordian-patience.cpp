@@ -9,6 +9,7 @@ bool move_possible(string a, string b) {
 	}
 }
 int main() {
+	cin.sync_with_stdio(0);cin.tie(0);
 	string card;
 	while (1) {
 		vector <vector<string> >  deck(52);
